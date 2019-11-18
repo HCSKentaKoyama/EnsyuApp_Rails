@@ -1,13 +1,23 @@
 class UsersController < ApplicationController
-    before_action :authenticate_user, {only: []}
+    before_action :authenticate_user, {only: [:createStudent,:createStudent_form,:createTeacher,:createTeacher_form]}
     before_action :forbid_login_user, {only: [:login_form, :login]}
 
     def login_form
-
+        @user = User.new
     end
 
     def login
-
+        @user = User.find_by(user_id: params[:user_id])
+        if @user && @user.authenticate(params[:password])
+            session[:user_id] = @user.user_id
+            flash[:notice] = "ログインしました"
+            redirect_to("/index")
+        else
+            flash[:notice] = "ユーザIDまたはパスワードが間違っています"
+            @userid = params[:user_id]
+            @password = params[:password]
+            render("users/login_form")
+        end
     end
 
     def createStudent_form
