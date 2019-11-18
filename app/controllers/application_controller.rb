@@ -19,4 +19,11 @@ class ApplicationController < ActionController::Base
         redirect_to("/index")
         end
     end
+
+    def admin_user_only
+        if @current_user.role != "admin"
+            flash[:notice] = "不正なアクセスです"
+            redirect_to("/index")
+        end
+    end
 end
