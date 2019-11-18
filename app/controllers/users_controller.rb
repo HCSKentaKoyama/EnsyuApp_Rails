@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-    before_action :authenticate_user, {only: [:createStudent,:createStudent_form,:createTeacher,:createTeacher_form]}
+    before_action :authenticate_user, {only: [:logout,:createStudent,:createStudent_form,:createTeacher,:createTeacher_form]}
     before_action :forbid_login_user, {only: [:login_form, :login]}
 
     def login_form
@@ -18,6 +18,12 @@ class UsersController < ApplicationController
             @password = params[:password]
             render("users/login_form")
         end
+    end
+
+    def logout
+        session[:user_id] = nil
+        flash[:notice] = "ログアウトしました"
+        redirect_to("/login")
     end
 
     def createStudent_form

@@ -3,6 +3,7 @@ Rails.application.routes.draw do
 
   get "login" => "users#login_form"
   post "login" => "users#login"
+  post "logout" => "users#logout"
   get "new/student" => "users#createStudent_form"
   get "new/teacher" => "users#createTeacher_form"
   post "new/student" => "users#createStudent"
