@@ -71,4 +71,9 @@ class ReportsController < ApplicationController
         @hash_notice = Report.new.getHashNotice()
         @hash_result = Report.new.getHashResult()
     end
+
+    def student_list
+        @reports = Report.where(student_id: @current_user.user_id).order(report_date: "ASC")
+        @hash_grade = Report.new.getHashGrade()
+    end
 end

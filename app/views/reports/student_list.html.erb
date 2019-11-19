@@ -1,0 +1,109 @@
+<div class="container">
+    <div class="box-heading">
+        提出済み受験報告書一覧
+    </div>
+    <div class="box-body cp_form">
+        承認待ち
+        <table class="table table-hover alt-table-responsive">
+            <thead>
+                <tr>
+                    <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        報告日
+                    </th>
+                    <th class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                        会社名
+                    </th>
+                    <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        試験日
+                    </th>
+                    <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        試験区分
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @reports.each do |report| %>
+                    <% if report.auth_flag == "0" %>
+                        <% strGrade = @hash_grade.fetch(:"#{report.exam_grade}") %>
+                        <tr>
+                            <th><%= link_to("#{report.report_date}","/report/display/#{report.id}") %></th>
+                            <th><%= link_to("#{report.com_name}","/report/display/#{report.id}") %></th>
+                            <th><%= link_to("#{report.exam_date}","/report/display/#{report.id}") %></th>
+                            <th><%= link_to("#{strGrade}","/report/display/#{report.id}") %></th>
+                        </tr>
+                    <% end %>
+                <% end %>
+            </tbody>
+        </table>
+
+        仮承認中 (試験後、追記が必要)
+        <table class="table table-hover alt-table-responsive">
+            <thead>
+                <tr>
+                    <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        報告日
+                    </th>
+                    <th class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                        会社名
+                    </th>
+                    <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        試験日
+                    </th>
+                    <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        試験区分
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @reports.each do |report| %>
+                    <% if report.auth_flag == "1" %>
+                        <% strGrade = @hash_grade.fetch(:"#{report.exam_grade}") %>
+                        <tr>
+                            <th><%= link_to("#{report.report_date}","/report/display/#{report.id}") %></th>
+                            <th><%= link_to("#{report.com_name}","/report/display/#{report.id}") %></th>
+                            <th><%= link_to("#{report.exam_date}","/report/display/#{report.id}") %></th>
+                            <th><%= link_to("#{strGrade}","/report/display/#{report.id}") %></th>
+                        </tr>
+                    <% end %>
+                <% end %>
+            </tbody>
+        </table>
+
+        承認済み (編集が可能)
+        <table class="table table-hover alt-table-responsive">
+            <thead>
+                <tr>
+                    <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        報告日
+                    </th>
+                    <th class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                        会社名
+                    </th>
+                    <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        試験日
+                    </th>
+                    <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        試験区分
+                    </th>
+                    <th class="col-xs-1 col-sm-1 col-md-1 col-lg-1">
+                        編集
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @reports.each do |report| %>
+                    <% if report.auth_flag == "2" %>
+                        <% strGrade = @hash_grade.fetch(:"#{report.exam_grade}") %>
+                        <tr>
+                            <th><%= link_to("#{report.report_date}","/report/display/#{report.id}") %></th>
+                            <th><%= link_to("#{report.com_name}","/report/display/#{report.id}") %></th>
+                            <th><%= link_to("#{report.exam_date}","/report/display/#{report.id}") %></th>
+                            <th><%= link_to("#{strGrade}","/report/display/#{report.id}") %></th>
+                            <th><%= link_to("▢","/report/update/#{report.id}") %></th>
+                        </tr>
+                    <% end %>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+</div>
