@@ -1,0 +1,59 @@
+<div class="container">
+    <div class="box-heading">
+        学生情報
+    </div>
+    <div class="box-body cp_form">
+        <h2 class="cp_reporth1title"><%= @student.name %></h2>
+        <table>
+            <tr>
+                <th>学籍番号</th>
+                <td><%= @student.user_id %></td>
+            </tr>
+            <tr>
+                <th>クラス番号</th>
+                <td><%= @student.class_number %></td>
+            </tr>
+            <tr>
+                <th>メールアドレス</th>
+                <td><%= @student.mail %></td>
+            </tr>
+            <tr>
+                <th>担当教員名</th>
+                <td><%= @teacher.name %></td>
+            </tr>
+        </table>
+        <br/>
+        承認済み報告書一覧
+        <table class="table table-hover alt-table-responsive">
+            <thead>
+                <tr>
+                    <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        報告日
+                    </th>
+                    <th class="col-xs-5 col-sm-5 col-md-5 col-lg-5">
+                        会社名
+                    </th>
+                    <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        試験日
+                    </th>
+                    <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        試験区分
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @reports.each do |report| %>
+                    <% if report.auth_flag == "0" %>
+                        <% strGrade = @hash_grade.fetch(:"#{report.exam_grade}") %>
+                        <tr>
+                            <th><%= link_to("#{report.report_date}","/report/display/#{report.id}") %></th>
+                            <th><%= link_to("#{report.com_name}","/report/display/#{report.id}") %></th>
+                            <th><%= link_to("#{report.exam_date}","/report/display/#{report.id}") %></th>
+                            <th><%= link_to("#{strGrade}","/report/display/#{report.id}") %></th>
+                        </tr>
+                    <% end %>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+</div>

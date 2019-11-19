@@ -1,0 +1,32 @@
+<div class="container">
+    <div class="box-heading">
+        担当学生一覧
+    </div>
+    <div class="box-body cp_form">
+        選択すると詳細を表示
+        <table class="table table-hover alt-table-responsive">
+            <thead>
+                <tr>
+                    <th class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                        学籍番号
+                    </th>
+                    <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        クラス
+                    </th>
+                    <th class="col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                        名前
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @users.each do |user| %>
+                    <tr>
+                        <th><%= link_to("#{user.user_id}","/student/display/#{user.user_id}") %></th>
+                        <th><%= link_to("#{user.class_number}","/student/display/#{user.user_id}") %></th>
+                        <th><%= link_to("#{user.name}","/student/display/#{user.user_id}") %></th>
+                    </tr>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+</div>

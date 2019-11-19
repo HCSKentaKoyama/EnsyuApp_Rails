@@ -1,5 +1,7 @@
+require "report.rb"
+
 class UsersController < ApplicationController
-    before_action :authenticate_user, {only: [:logout,:createStudent,:createStudent_form,:createTeacher,:createTeacher_form,:update_form,:update]}
+    before_action :authenticate_user, {only: [:logout,:createStudent,:createStudent_form,:createTeacher,:createTeacher_form,:update_form,:update,:chargedStudent_list,:student_info]}
     before_action :forbid_login_user, {only: [:login_form, :login]}
     before_action :admin_user_only,{only: [:createStudent,:createStudent_form,:createTeacher,:createTeacher_form]}
 
@@ -102,5 +104,16 @@ class UsersController < ApplicationController
             @mail = params[:mail]
             render("users/update")
         end
+    end
+
+    def chargedStudent_list
+        @users = User.where(teacher_id: @current_user.user_id).order(user_id: "ASC")
+    end
+
+    def student_info
+        @student = User.find_by(user_id: params[:id])
+        @teacher = User.find_by(user_id: @student.teacher_id)
+        @reports = Report.where(student_id: @student.user_id).order(report_date: "ASC")
+        @hash_grade = Report.new.getHashGrade()
     end
 end

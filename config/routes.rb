@@ -10,6 +10,8 @@ Rails.application.routes.draw do
   get "new/teacher" => "users#createTeacher_form"
   post "new/student" => "users#createStudent"
   post "new/teacher" => "users#createTeacher"
+  get "list/chargedStudent" => "users#chargedStudent_list"
+  get "student/display/:id" => "users#student_info"
 
   get "entry" => "reports#new_form"
   post "entry/recheck" => "reports#new_recheck"
