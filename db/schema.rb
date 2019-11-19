@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_11_18_023320) do
+ActiveRecord::Schema.define(version: 2019_11_19_010920) do
 
   create_table "reports", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.date "report_date", null: false
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 2019_11_18_023320) do
     t.boolean "auth_flag", default: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "notice_method"
   end
 
   create_table "users", primary_key: "user_id", id: :string, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|

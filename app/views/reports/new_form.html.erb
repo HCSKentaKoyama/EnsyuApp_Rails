@@ -1,0 +1,131 @@
+<div class="container">
+    <div class="box-heading">
+        受験報告書の作成
+    </div>
+    <div class="box-body">
+        <h2 class="cp_h1title text-center">受験報告書</h2>
+        <div class="cp_form">
+            <%= form_tag("entry/recheck",class: "go-bottom") do %>
+                <div class="form-group cp_tx">
+                    <input name ="com_name" value="<%= @com_name %>" class="form-control bootstrap-form" required>
+                    <label>企業名</label>
+                </div>
+                <div class="form-group cp_tx">
+                    <input type = "date" name ="exam_date" value="<%= @exam_date %>" class="form-control bootstrap-form" required>
+                    <label>日時</label>
+                </div>
+                <div class="form-group cp_tx">
+                    <input name ="exam_place" value="<%= @exam_place %>" class="form-control bootstrap-form" required>
+                    <label>受験場所</label>
+                </div>
+                <div class="form-group cp_ipselect cp_sl01">
+                    <select required name="exam_grade">
+                    <option value="" hidden>試験区分</option>
+                    <option value="0">１次試験</option>
+                    <option value="1">２次試験</option>
+                    <option value="2">３次試験</option>
+                    <option value="3">４次試験</option>
+                    <option value="9">最終試験</option>
+                    </select>
+                </div>
+                <div class="form-group cp_ipselect cp_sl01">
+                    <select required name="notice_method">
+                    <option value="" hidden>合否通知</option>
+                    <option value="0">１週間以内に本人</option>
+                    <option value="1">２週間以内に本人</option>
+                    <option value="2">３週間以内に本人</option>
+                    <option value="3">１週間以内に学校</option>
+                    <option value="4">２週間以内に学校</option>
+                    <option value="5">３週間以内に学校</option>
+                    <option value="9">その他</option>
+                    </select>
+                </div>
+
+                <div class="text-center">
+                    募集方法
+                </div>
+                <div class="form-group cp_ipcheck">
+                    <%= check_box "exam_method", "0" %>
+                    <label for="101">学校斡旋</label>
+                    <%= check_box "exam_method", "1" %>
+                    <label for="102">斡旋サイト</label>
+                    <%= check_box "exam_method", "2" %>
+                    <label for="103">企業HP</label>
+                    <%= check_box "exam_method", "3" %>
+                    <label for="104">新聞雑誌</label>
+                    <%= check_box "exam_method", "4" %>
+                    <label for="105">ジョブカフェ等</label>
+                    <%= check_box "exam_method", "9" %>
+                    <label for="106">その他</label>
+                </div><br>
+
+                <div class="text-center">
+                    試験内容
+                </div>
+                <div class="form-group cp_ipcheck">
+                    <%= check_box "exam_content", "0" %>
+                    <label for="201">適正</label>
+                    <%= check_box "exam_content", "1" %>
+                    <label for="202">筆記・作文</label>
+                    <%= check_box "exam_content", "2" %>
+                    <label for="203">ディスカッション</label>
+                    <%= check_box "exam_content", "3" %>
+                    <label for="204">グループワーク</label>
+                    <%= check_box "exam_content", "4" %>
+                    <label for="205">集団面接</label>
+                    <%= check_box "exam_content", "5" %>
+                    <label for="206">個人面接</label>
+                    <%= check_box "exam_content", "9" %>
+                    <label for="207">その他</label>
+                </div><br>
+
+                <div class="text-center">
+                    試験詳細内容
+                </div>
+                <div class="form-group cp_ipcheck">
+                    <%= check_box "exam_detail", "0" %>
+                    <label for="301">SPI</label>
+                    <%= check_box "exam_detail", "1" %>
+                    <label for="302">CAB/GAB</label>
+                    <%= check_box "exam_detail", "2" %>
+                    <label for="303">職業適性</label>
+                    <%= check_box "exam_detail", "3" %>
+                    <label for="304">クレペリン</label>
+                    <%= check_box "exam_detail", "4" %>
+                    <label for="305">その他適正</label>
+                    <%= check_box "exam_detail", "5" %>
+                    <label for="306">一般常識</label>
+                    <%= check_box "exam_detail", "6" %>
+                    <label for="307">専門知識</label>
+                    <%= check_box "exam_detail", "7" %>
+                    <label for="308">作文</label>
+                    <%= check_box "exam_detail", "8" %>
+                    <label for="309">個人面接</label>
+                    <%= check_box "exam_detail", "9" %>
+                    <label for="310">集団面接</label>
+                    <%= check_box "exam_detail", "a" %>
+                    <label for="311">グループディスカッション</label>
+                    <%= check_box "exam_detail", "b" %>
+                    <label for="312">グループワーク</label>
+                    <%= check_box "exam_detail", "z" %>
+                    <label for="313">その他</label>
+                </div>
+                <div class="form-group cp_tx">
+                    <textarea name="free_comment" required></textarea>
+                    <label>自由記述欄</label>
+                </div>
+                <div class="form-group cp_ipselect cp_sl01" name="result">
+                    <select>
+                    <option value="" hidden>合否</option>
+                    <option value="0">合格</option>
+                    <option value="1">不合格</option>
+                    </select>
+                </div>
+
+                <div class="btn_cont cp_btn text-center">
+                    <input type="submit" value="確認" class="btn">
+                </div>
+            <% end %>
+        </div>
+    </div>
+</div>
