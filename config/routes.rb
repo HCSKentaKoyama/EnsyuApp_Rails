@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   get "entry" => "reports#new_form"
   post "entry/recheck" => "reports#new_recheck"
   post "entry" => "reports#new"
+  get "report/:id" => "reports#display"
 
   get "index" => "reports#index"
   get "/" => "reports#index"

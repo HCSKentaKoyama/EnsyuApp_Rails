@@ -1,0 +1,58 @@
+<div class="container">
+    <div class="box-heading">
+        受験報告書
+    </div>
+    <div class="box-body cp_form">
+        <h2 class="cp_reporth1title"><%= @report.com_name %></h2>
+            <table>
+                <tr>
+                    <th>受験日時</th>
+                    <td><%= @report.exam_date %></td>
+                </tr>
+                <tr>
+                    <th>受験場所</th>
+                    <td><%= @report.exam_place %></td>
+                </tr>
+                <tr>
+                    <th>募集方法</th>
+                    <td>
+                        <% @report.exam_method.split(",").each do |method| %>
+                            <%= @hash_method.fetch(:"#{method}") %><br/>
+                        <% end %>
+                    </td>
+                </tr>
+                <tr>
+                    <th>試験区分</th>
+                    <td><%= @hash_grade.fetch(:"#{@report.exam_grade}") %></td>
+                </tr>
+                <tr>
+                    <th>試験内容</th>
+                    <td>
+                        <% @report.exam_content.split(",").each do |content| %>
+                            <%= @hash_content.fetch(:"#{content}") %><br/>
+                        <% end %>
+                    </td>
+                </tr>
+                <tr>
+                    <th>試験詳細</th>
+                    <td>
+                        <% @report.exam_detail.split(",").each do |detail| %>
+                            <%= @hash_detail.fetch(:"#{detail}") %><br/>
+                        <% end %>
+                    </td>
+                </tr>
+                <tr>
+                    <th>結果通知方法</th>
+                    <td><%= @hash_notice.fetch(:"#{@report.notice_method}") %></td>
+                </tr>
+                <tr>
+                    <th>自由記述</th>
+                    <td><%= @report.free_comment %></td>
+                </tr>
+                <tr>
+                    <th>合否</th>
+                    <td><%= @hash_result.fetch(:"#{@report.result}") %></td>
+                </tr>
+            </table>
+    </div>
+</div>

@@ -61,4 +61,14 @@ class ReportsController < ApplicationController
             render("reports/new_form")
         end
     end
+
+    def display
+        @report = Report.find_by(id: params[:id])
+        @hash_method = Report.new.getHashMethod()
+        @hash_content = Report.new.getHashContent()
+        @hash_detail = Report.new.getHashDetail()
+        @hash_grade = Report.new.getHashGrade()
+        @hash_notice = Report.new.getHashNotice()
+        @hash_result = Report.new.getHashResult()
+    end
 end
