@@ -21,3 +21,70 @@
 @import "bootstrap";
 @import "partials/*"; // glob importing
 
+
+/* universal */
+body {
+    font-family: 'jp';
+    background-color: #ffffff;
+}
+.center {
+    text-align: center;
+    h1 {
+        margin-bottom: 10px;
+    }
+}
+
+.main{
+    position: absolute;
+    width: 100%;
+    //height: auto;
+    min-height: 100%;
+}
+.container{
+    max-width: 900px;
+    margin: 30px auto;
+    padding-left: 30px;
+    padding-right: 30px;
+    clear: both;
+}
+.box-heading{
+    font-weight: 300;
+    margin: 60px 0 20px;
+    font-size: 48px;
+    color: #EC407A;
+}
+
+/* typography */
+h1, h2, h3, h4, h5, h6 {
+    line-height: 1;
+}
+
+h1 {
+    font-size: 3em;
+    letter-spacing: -2px;
+    margin-bottom: 30px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 2.2em;
+    letter-spacing: -1px;
+    margin-bottom: 30px;
+    text-align: center;
+    font-weight: normal;
+    color: #777;
+}
+
+p {
+    font-size: 1.1em;
+    line-height: 1.7em;
+}
+
+.alt-table-responsive {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    overflow-x: auto;
+    -ms-overflow-style: -ms-autohiding-scrollbar;
+    -webkit-overflow-scrolling: touch;
+}
