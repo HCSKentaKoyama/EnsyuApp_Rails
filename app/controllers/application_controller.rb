@@ -2,6 +2,8 @@ class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
     before_action :set_current_user
     autocomplete :report, :com_name, full: true # 追加
+    autocomplete :user, :class_number, full: true # 追加
+    autocomplete :user, :teacher_id, full: true # 追加
 
 
     def set_current_user

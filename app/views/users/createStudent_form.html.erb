@@ -14,7 +14,7 @@
             </div>
             <div class="form-group">
                 <label>クラス番号(例 : R4A101)</label>
-                <input name ="class_number" value="<%= @class_number %>" class="form-control bootstrap-form">
+                <%= autocomplete_field_tag 'class_number', nil, autocomplete_user_class_number_users_path,:required => true,:value => "#{@class_number}" %>
             </div>
             <div class="form-group">
                 <label>名前</label>
@@ -22,7 +22,7 @@
             </div>
             <div class="form-group">
                 <label>担当教員ID</label>
-                <input name ="teacher_id" value="<%= @teacher_id %>" class="form-control bootstrap-form">
+                <%= autocomplete_field_tag 'teacher_id', nil, autocomplete_user_teacher_id_users_path,:required => true,:value => "#{@teacher_id}" %>
             </div>
             <input type="submit" value="新規登録" class="btn btn-primary">
         <% end %>

@@ -7,6 +7,12 @@ Rails.application.routes.draw do
   get "update" => "users#update_form"
   post "update" =>"users#update"
   get "new/student" => "users#createStudent_form"
+  resources :users do
+    get :autocomplete_user_class_number, on: :collection
+  end
+  resources :users do
+    get :autocomplete_user_teacher_id, on: :collection
+  end
   get "new/teacher" => "users#createTeacher_form"
   post "new/student" => "users#createStudent"
   post "new/teacher" => "users#createTeacher"

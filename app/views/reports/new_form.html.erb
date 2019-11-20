@@ -7,7 +7,7 @@
         <div class="cp_form">
             <%= form_tag("/entry/recheck",class: "go-bottom") do %>
                 <div class="form-group cp_tx">
-                    <input type="text" name ="com_name" value="<%= @com_name %>" class="form-control bootstrap-form" required>
+                    <%= autocomplete_field_tag 'com_name', nil, autocomplete_report_com_name_reports_path,:required => true,:value => "#{@com_name}" %>
                     <label>企業名</label>
                 </div>
                 <div class="form-group cp_tx">
