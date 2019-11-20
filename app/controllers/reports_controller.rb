@@ -76,4 +76,53 @@ class ReportsController < ApplicationController
         @reports = Report.where(student_id: @current_user.user_id).order(report_date: "ASC")
         @hash_grade = Report.new.getHashGrade()
     end
+
+    def chargedList
+        @reports = Report.where(teacher_id: @current_user.user_id).order(report_date: "ASC")
+        @students = User.where(role: "student")
+        @hash_grade = Report.new.getHashGrade()
+    end
+
+    def check_form
+        @hash_method = Report.new.getHashMethod()
+        @hash_content = Report.new.getHashContent()
+        @hash_detail = Report.new.getHashDetail()
+        @hash_grade = Report.new.getHashGrade()
+        @hash_notice = Report.new.getHashNotice()
+        @hash_result = Report.new.getHashResult()
+        @report = Report.find_by(id: params[:id])
+        @student = User.find_by(user_id: @report.student_id)
+    end
+
+    def check_recheck
+        @hash_method = Report.new.getHashMethod()
+        @hash_content = Report.new.getHashContent()
+        @hash_detail = Report.new.getHashDetail()
+        @hash_grade = Report.new.getHashGrade()
+        @hash_notice = Report.new.getHashNotice()
+        @hash_result = Report.new.getHashResult()
+        @hash_auth = {"1": "仮承認　(試験後に再提出)","2": "承　認　(公開)","3": "未承認　(再提出が必要)"}
+
+        @report = Report.find_by(id: params[:id])
+        @report.auth_flag = params[:auth_flag]
+        @report.teached_comment = params[:teached_comment]
+        @student = User.find_by(user_id: @report.student_id)
+        render :check_form if @report.invalid?
+    end
+
+    def check
+        @report = Report.find_by(id: params[:id])
+        @report.auth_flag = params[:auth_flag]
+        @report.teached_comment = params[:teached_comment]
+        @report.due_date = params[:due_date]
+        if @report.save
+            flash[:notice] = "完了しました"
+            # メール関係のモジュール
+            
+            redirect_to("/report/chargedList")
+        else
+            flash[:notice] = "登録内容に問題があります"
+            render :check_form
+        end
+    end
 end

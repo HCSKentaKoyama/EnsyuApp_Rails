@@ -1,0 +1,51 @@
+<div class="container">
+    <div class="box-heading">
+        承認が必要な報告書一覧
+    </div>
+    <div class="box-body cp_form">
+        承認待ち
+        <table class="table table-hover alt-table-responsive">
+            <thead>
+                <tr>
+                    <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        報告日
+                    </th>
+                    <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        クラス番号
+                    </th>
+                    <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        名前
+                    </th>
+                    <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        会社名
+                    </th>
+                    <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        試験日
+                    </th>
+                    <th class="col-xs-2 col-sm-2 col-md-2 col-lg-2">
+                        試験区分
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                <% @reports.each do |report| %>
+                    <% if report.auth_flag == "0" %>
+                        <% strGrade = @hash_grade.fetch(:"#{report.exam_grade}") %>
+                        <tr>
+                            <th><%= link_to("#{report.report_date}","/report/check/#{report.id}") %></th>
+                            <% @students.each do |student| %>
+                                <% if report.student_id == student.user_id %>
+                                    <th><%= link_to("#{student.class_number}","/report/check/#{report.id}") %></th>
+                                    <th><%= link_to("#{student.name}","/report/check/#{report.id}") %></th>
+                                <% end %>
+                            <% end %>
+                            <th><%= link_to("#{report.com_name}","/report/check/#{report.id}") %></th>
+                            <th><%= link_to("#{report.exam_date}","/report/check/#{report.id}") %></th>
+                            <th><%= link_to("#{strGrade}","/report/check/#{report.id}") %></th>
+                        </tr>
+                    <% end %>
+                <% end %>
+            </tbody>
+        </table>
+    </div>
+</div>

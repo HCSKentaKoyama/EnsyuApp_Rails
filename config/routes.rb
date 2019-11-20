@@ -18,6 +18,10 @@ Rails.application.routes.draw do
   post "entry" => "reports#new"
   get "report/display/:id" => "reports#display"
   get "reportedList" => "reports#student_list"
+  get "report/chargedList" => "reports#chargedList"
+  get "report/check/:id" => "reports#check_form"
+  post "report/recheck" => "reports#check_recheck"
+  post "report/check" => "reports#check"
 
   get "index" => "reports#index"
   get "/" => "reports#index"

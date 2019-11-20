@@ -1,0 +1,90 @@
+<div class="container">
+    <div class="box-heading">
+        受験報告書
+    </div>
+    <div class="box-body cp_form">
+        <h2 class="cp_reporth1title"><%= @report.com_name %></h2>
+            <table>
+                <tr>
+                    <th>提出者</th>
+                    <td>
+                        <%= @student.user_id %><br/>
+                        <%= @student.class_number %><br/>
+                        <%= @student.name %><br/>
+                    </td>
+                </tr>
+                <tr>
+                    <th>受験日時</th>
+                    <td><%= @report.exam_date %></td>
+                </tr>
+                <tr>
+                    <th>受験場所</th>
+                    <td><%= @report.exam_place %></td>
+                </tr>
+                <tr>
+                    <th>募集方法</th>
+                    <td>
+                        <% @report.exam_method.split(",").each do |method| %>
+                            <%= @hash_method.fetch(:"#{method}") %><br/>
+                        <% end %>
+                    </td>
+                </tr>
+                <tr>
+                    <th>試験区分</th>
+                    <td><%= @hash_grade.fetch(:"#{@report.exam_grade}") %></td>
+                </tr>
+                <tr>
+                    <th>試験内容</th>
+                    <td>
+                        <% @report.exam_content.split(",").each do |content| %>
+                            <%= @hash_content.fetch(:"#{content}") %><br/>
+                        <% end %>
+                    </td>
+                </tr>
+                <tr>
+                    <th>試験詳細</th>
+                    <td>
+                        <% @report.exam_detail.split(",").each do |detail| %>
+                            <%= @hash_detail.fetch(:"#{detail}") %><br/>
+                        <% end %>
+                    </td>
+                </tr>
+                <tr>
+                    <th>結果通知方法</th>
+                    <td><%= @hash_notice.fetch(:"#{@report.notice_method}") %></td>
+                </tr>
+                <tr>
+                    <th>自由記述</th>
+                    <td><%= @report.free_comment %></td>
+                </tr>
+                <tr>
+                    <th>合否</th>
+                    <td><%= @hash_result.fetch(:"#{@report.result}") %></td>
+                </tr>
+            </table>
+        <br/>
+        <div class="cp_form">
+            <%= form_tag("/report/recheck",class: "go-bottom") do %>
+                <div class="form-group cp_tx">
+                    <textarea name="teached_comment"></textarea>
+                    <label>コメント</label>
+                </div>
+                <div class="form-group cp_ipselect cp_sl01">
+                    <select  name="auth_flag" required>
+                        <option value="" hidden>承認可否</option>
+                        <option value="2">承　認　(公開)</option>
+                        <option value="1">仮承認　(試験後に再提出)</option>
+                        <option value="3">未承認　(再提出が必要)</option>
+                    </select>
+                </div>
+
+                <div class="cp_btn">
+                    <div class="btn_cont text-center">
+                        <input type="submit" value="確認" class="btn">
+                    </div>
+                </div>
+                <input type="hidden" name="id" value="<%= @report.id %>">
+            <% end %>
+        </div>
+    </div>
+</div>

@@ -43,7 +43,7 @@
             </thead>
             <tbody>
                 <% @reports.each do |report| %>
-                    <% if report.auth_flag == "0" %>
+                    <% if report.auth_flag == "2" %>
                         <% strGrade = @hash_grade.fetch(:"#{report.exam_grade}") %>
                         <tr>
                             <th><%= link_to("#{report.report_date}","/report/display/#{report.id}") %></th>
