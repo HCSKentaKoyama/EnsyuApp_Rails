@@ -22,6 +22,10 @@ Rails.application.routes.draw do
   get "report/check/:id" => "reports#check_form"
   post "report/recheck" => "reports#check_recheck"
   post "report/check" => "reports#check"
+  get "report/update/list" => "reports#anAuthedList"
+  post "report/update/recheck" => "reports#update_recheck"
+  get "report/update/:id" => "reports#update_form"
+  post "report/update" => "reports#update"
 
   get "index" => "reports#index"
   get "/" => "reports#index"

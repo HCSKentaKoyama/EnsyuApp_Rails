@@ -118,11 +118,68 @@ class ReportsController < ApplicationController
         if @report.save
             flash[:notice] = "完了しました"
             # メール関係のモジュール
-            
+
             redirect_to("/report/chargedList")
         else
             flash[:notice] = "登録内容に問題があります"
             render :check_form
+        end
+    end
+
+    def anAuthedList
+        @reports = Report.where(student_id: @current_user.user_id).order(report_date: "ASC")
+        @hash_grade = Report.new.getHashGrade()
+    end
+
+    def update_form
+        @report = Report.find_by(id: params[:id])
+    end
+
+    def update_recheck
+        @hash_method = Report.new.getHashMethod()
+        @hash_content = Report.new.getHashContent()
+        @hash_detail = Report.new.getHashDetail()
+        @hash_grade = Report.new.getHashGrade()
+        @hash_notice = Report.new.getHashNotice()
+        @hash_result = Report.new.getHashResult()
+
+        @report = Report.find_by(id: params[:id])
+        @report.com_name = params[:com_name]
+        @report.exam_date = params[:exam_date]
+        @report.exam_place = params[:exam_place]
+        @report.exam_grade = params[:exam_grade]
+        @report.notice_method =  params[:notice_method]
+        @report.exam_method =  Report.new.checkboxToArray(params[:exam_method])
+        @report.exam_content =  Report.new.checkboxToArray(params[:exam_content])
+        @report.exam_detail =  Report.new.checkboxToArray(params[:exam_detail])
+        @report.free_comment =  params[:free_comment]
+        @report.result = params[:result]
+        render :update_form if @report.invalid?
+    end
+
+    def update
+        @report = Report.find_by(id: params[:id])
+        @report.com_name = params[:com_name]
+        @report.exam_date = params[:exam_date]
+        @report.exam_place = params[:exam_place]
+        @report.exam_grade = params[:exam_grade]
+        @report.notice_method = params[:notice_method]
+        @report.exam_method = params[:exam_method]
+        @report.exam_content = params[:exam_content]
+        @report.exam_detail = params[:exam_detail]
+        @report.free_comment = params[:free_comment]
+        @report.result = params[:result]
+        @report.student_id = @current_user.user_id
+        @report.teacher_id = @current_user.teacher_id
+        @report.auth_flag = "0"
+        @report.report_date = Date.today
+
+        if @report.save
+            flash[:notice] = "送信が完了しました"
+            redirect_to("/report/update/list")
+        else
+            flash[:notice] = "登録内容に問題があります"
+            render :update_form
         end
     end
 end
