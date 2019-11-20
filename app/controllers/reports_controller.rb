@@ -182,4 +182,24 @@ class ReportsController < ApplicationController
             render :update_form
         end
     end
+
+    def serach_form
+    end
+
+    def search_result
+        @hash_grade = Report.new.getHashGrade()
+        @hash_result = Report.new.getHashResult()
+
+        contentArray = Report.new.checkboxToArray(params[:exam_content])
+        detailArray = Report.new.checkboxToArray(params[:exam_detail])
+        @reports = Report.all
+        @reports = @reports.where("com_name LIKE ?", "%#{params[:com_name]}%") if params[:com_name].present?
+        contentArray.split(",").each do |content|
+            @reports = @reports.where("exam_content LIKE ?", "%#{content}%")
+        end
+        detailArray.split(",").each do |detail|
+            @reports = @reports.where("exam_detail LIKE ?", "%#{detail}%")
+        end
+        @reports = @reports.where("exam_grade LIKE ?", "%#{params[:exam_grade]}%") if params[:exam_grade].present?
+    end
 end

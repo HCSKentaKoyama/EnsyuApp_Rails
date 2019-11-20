@@ -27,6 +27,12 @@ Rails.application.routes.draw do
   get "report/update/:id" => "reports#update_form"
   post "report/update" => "reports#update"
 
+  get "search" => "reports#search_form"
+  post "search/result" => "reports#search_result"
+  resources :reports do
+    get :autocomplete_report_com_name, on: :collection
+  end
+
   get "index" => "reports#index"
   get "/" => "reports#index"
 end

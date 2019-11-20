@@ -1,3 +1,196 @@
 // Place all the styles related to the reports controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+/*ページの外枠の設定*/
+.cp_form {
+    position: relative;
+    width: 650px;
+    margin: 40px auto;
+    padding: 1em 2em;
+    box-shadow:0px 0px 3px 2px #ededed;
+    }
+    
+    /*テキストボックス*/
+    .cp_iptxt {
+        position: relative;
+        width: 80%;
+        margin: 40px 3%;
+    }
+    .cp_iptxt input[type='text'] {
+        font: 15px/24px sans-serif;
+        box-sizing: border-box;
+        width: 100%;
+        padding: 0.3em;
+        transition: 0.3s;
+        letter-spacing: 1px;
+        color: #1b2538;
+        border: 1px solid #1b2538;
+        border-radius: 4px;
+    }
+    .ef input[type='text']:focus {
+        border: 1px solid #EC407A; /* テキストボックス内ホバー色 */
+        outline: none;
+        box-shadow: 0 0 5px 1px rgba(218,60,65, .5);
+    }
+    
+    /*ボタンの設定*/
+    .cp_btn {
+        display: block;
+        width: 160px;
+        padding: 0.8em;
+        text-align: center;
+        text-decoration: none;
+        color: #EC407A;
+        background: #fff;
+        border: 2px solid #EC407A;
+        border-radius: 3px;
+        transition: .4s;
+    }
+    .cp_btn:hover {
+        background: #EC407A;
+        color: #fff;
+    }
+    
+    /*ドロップダウンの設定*/
+    .cp_ipselect {
+    overflow: hidden;
+    width: 100%;
+    margin: 1em auto;
+    text-align: center;
+    }
+    .cp_ipselect select {
+    font-family: inherit;
+    font-size: 1rem;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    padding-right: 1em;
+    cursor: pointer;
+    text-indent: 0.01px;
+    text-overflow: ellipsis;
+    border: none;
+    border-radius: 0;
+    outline: none;
+    background: transparent;
+    background-image: none;
+    box-shadow: none;
+    -webkit-appearance: none;
+    appearance: none;
+    }
+    .cp_ipselect select::-ms-expand {
+    display: none;
+    }
+    .cp_ipselect.cp_sl01 {
+    position: relative;
+    border: 1px solid #cccccc;
+    border-radius: 2px;
+    }
+    .cp_ipselect.cp_sl01::before {
+    position: absolute;
+    top: 1em;
+    right: 0.9em;
+    width: 0;
+    height: 0;
+    padding: 0;
+    content: '';
+    pointer-events: none;
+    border-top: 6px solid #da3c41;
+    border-right: 6px solid transparent;
+    border-left: 6px solid transparent;
+    }
+    .cp_ipselect.cp_sl01 select {
+    padding: 8px 38px 8px 8px;
+    color: #999999;
+    }
+    .cp_ipselect.cp_sl01 select:valid {
+    color: #333333;
+    }
+    
+    /* チャックボックス*/
+    .cp_ipcheck {
+        -webkit-box-sizing: border-box;
+                box-sizing: border-box;
+    }
+    .cp_ipcheck:before, .cp_ipcheck:after {
+        -webkit-box-sizing: inherit;
+                box-sizing: inherit;
+    }
+    .cp_ipcheck .box {
+        width: 90%;
+        margin: 2em auto;
+        text-align: left;
+        border: 1px solid white;
+        border-radius: 3px;
+        background: #ffffff;
+    }
+    .cp_ipcheck input[type=checkbox] {
+        display: none;
+    }
+    .cp_ipcheck label:focus,
+    .cp_ipcheck label:hover,
+    .cp_ipcheck label:active,
+    .cp_ipcheck input:checked + label {
+        color: #EC407A; /* チャックボックス内の文字色 */
+    }
+    .cp_ipcheck label:focus:before,
+    .cp_ipcheck label:hover:before,
+    .cp_ipcheck label:active:before,
+    .cp_ipcheck input:checked + label:before {
+        border-color: #EC407A;/* チャックボックス内の外枠の色 */
+        background: #ffffff;
+    }
+    .cp_ipcheck label {
+        font-size: 1em;
+        font-weight: bold;
+        line-height: 1;
+        position: relative;
+        display: block;
+        overflow: hidden;
+        padding: 1em 1em 1em 3em;
+        cursor: pointer;
+        -webkit-transition: all 0.15s ease;
+                transition: all 0.15s ease;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        background: #ffffff;
+    }
+    .cp_ipcheck label:before {
+        position: absolute;
+        top: 1em;
+        left: 1em;
+        width: 10px;
+        height: 10px;
+        content: '';
+        border: 0.2em solid #cccccc;
+    }
+    .cp_ipcheck input:checked + label:before {/* チャックボックス内のチャック後の色 */
+        border-color: #EC407A;
+        background: #EC407A;
+    }
+    
+    /*ページタイトルの指定*/
+    .cp_h1title {
+        position: relative;
+        display: inline-block;
+        padding: 0 17%;
+        text-align: center;
+        color:#000000;/*文字色*/
+    }
+    .cp_h1title:before, .cp_h1title:after {
+        content: '';
+        position: absolute;
+        top: 50%;
+        display: inline-block;
+        width: 15%;
+        height: 1px;
+        background-color: #F4511E;
+    }
+    .cp_h1title:before {
+        left:0;
+        background: linear-gradient(-45deg, transparent, #EC407A 10%, #EC407A 30%, transparent);
+    }
+    .cp_h1title:after {
+        right: 0;
+        background: linear-gradient(-45deg, transparent, #EC407A 70%, #EC407A 90%, transparent);
+    }

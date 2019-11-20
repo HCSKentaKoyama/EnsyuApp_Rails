@@ -1,0 +1,61 @@
+<div class="container">
+    <div class="box-heading">
+        受験報告書　検索
+    </div>
+    <div class="box-body cp_form">
+        <%= form_tag("/search/result") do %>
+            <div class="form-group cp_iptxt">
+                <label class="ef">
+                    <%= autocomplete_field_tag 'com_name', nil, autocomplete_report_com_name_reports_path,:placeholder => '企業名',:required => true %>
+                </label>
+            </div>
+            <h3>試験内容</h3>
+            <div class="cp_ipcheck">
+                <div class="box">
+                    <table>
+                        <tr>
+                            <td>
+                                <%= check_box "exam_content", "0",{id: "a_ch1"} %>
+                                <label for="a_ch1">適正</label>
+                            </td>
+                            <td>
+                                <%= check_box "exam_content", "1",{id: "a_ch2"} %>
+                                <label for="a_ch2">筆記・作文</label>
+                            </td>
+                            <td>
+                                <%= check_box "exam_content", "2",{id: "a_ch3"} %>
+                                <label for="a_ch3">ディスカッション</label>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <%= check_box "exam_detail", "a" ,{id: "a_ch4"} %>
+                                <label for="a_ch4">グループワーク</label>
+                            </td>
+                            <td>
+                                <%= check_box "exam_detail", "9" ,{id: "a_ch5"} %>
+                                <label for="a_ch5">集団面接</label>
+                            </td>
+                            <td>
+                                <%= check_box "exam_detail", "8" ,{id: "a_ch6"} %>
+                                <label for="a_ch6">個人面接</label>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <div class="cp_ipselect cp_sl01">
+                <select  name="exam_grade">
+                    <option value="">試験区分</option>
+                    <option value="0">1次試験</option>
+                    <option value="1">2次試験</option>
+                    <option value="2">3次試験</option>
+                    <option value="3">4次試験</option>
+                    <option value="9">最終試験</option>
+                </select>
+            </div>
+            <input type="submit" value="検索" class="cp_btn">
+        <% end %>
+    </div>
+</div>
