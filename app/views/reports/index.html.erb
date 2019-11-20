@@ -7,10 +7,10 @@
         <br/>
         role : <%= @current_user.role %>
 
-        <% if @current_user.role = "student" %>
+        <% if @current_user.role == "student" %>
         <!-- 学生の表示内容 -->
 
-        <% elsif @current_user.role = "teacher" %>
+        <% elsif @current_user.role == "teacher" %>
         <!-- 教員の表示内容 -->
 
         <% else %>

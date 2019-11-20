@@ -192,7 +192,7 @@ class ReportsController < ApplicationController
 
         contentArray = Report.new.checkboxToArray(params[:exam_content])
         detailArray = Report.new.checkboxToArray(params[:exam_detail])
-        @reports = Report.all
+        @reports = Report.where(auth_flag: "2")
         @reports = @reports.where("com_name LIKE ?", "%#{params[:com_name]}%") if params[:com_name].present?
         contentArray.split(",").each do |content|
             @reports = @reports.where("exam_content LIKE ?", "%#{content}%")

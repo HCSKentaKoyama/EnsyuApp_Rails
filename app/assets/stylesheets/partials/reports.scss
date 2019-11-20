@@ -3,63 +3,143 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 /*ページの外枠の設定*/
+/*　画面基本設計　*/
 .cp_form {
     position: relative;
     width: 650px;
     margin: 40px auto;
     padding: 1em 2em;
     box-shadow:0px 0px 3px 2px #ededed;
-    }
-    
-    /*テキストボックス*/
-    .cp_iptxt {
-        position: relative;
-        width: 80%;
-        margin: 40px 3%;
-    }
-    .cp_iptxt input[type='text'] {
-        font: 15px/24px sans-serif;
-        box-sizing: border-box;
-        width: 100%;
-        padding: 0.3em;
-        transition: 0.3s;
-        letter-spacing: 1px;
-        color: #1b2538;
-        border: 1px solid #1b2538;
-        border-radius: 4px;
-    }
-    .ef input[type='text']:focus {
-        border: 1px solid #EC407A; /* テキストボックス内ホバー色 */
-        outline: none;
-        box-shadow: 0 0 5px 1px rgba(218,60,65, .5);
-    }
-    
-    /*ボタンの設定*/
-    .cp_btn {
-        display: block;
-        width: 160px;
-        padding: 0.8em;
-        text-align: center;
-        text-decoration: none;
-        color: #EC407A;
-        background: #fff;
-        border: 2px solid #EC407A;
-        border-radius: 3px;
-        transition: .4s;
-    }
-    .cp_btn:hover {
-        background: #EC407A;
-        color: #fff;
-    }
-    
-    /*ドロップダウンの設定*/
-    .cp_ipselect {
+}
+
+/*　タイトルデザイン　*/
+.cp_reporth1title {
+	position: relative;
+	padding: .1em .3em .1em .5em;
+	border-left: 6px solid #EC407A;
+}
+.cp_reporth1title::before {
+	position: absolute;
+	content: '';
+	left: -6px;
+	bottom: 0;
+	width: 6px;
+	height: 50%;
+	background-color: #EC407A;
+}
+.cp_reporth1title::after {
+	position: absolute;
+	content: '';
+	left: 0;
+	bottom: 0;
+	width: 100%;
+	height: 0;
+	border-bottom: 1px solid #eeeeee;
+}
+
+/*ページタイトルの指定*/
+.cp_h1title {
+	position: relative;
+	display: inline-block;
+	padding: 0 17%;
+	text-align: center;
+	color:#000000;/*文字色*/
+}
+.cp_h1title:before, .cp_h1title:after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	display: inline-block;
+	width: 15%;
+	height: 1px;
+	background-color: #F4511E;
+}
+.cp_h1title:before {
+	left:0;
+	background: linear-gradient(-45deg, transparent, #EC407A 10%, #EC407A 30%, transparent);
+}
+.cp_h1title:after {
+	right: 0;
+	background: linear-gradient(-45deg, transparent, #EC407A 70%, #EC407A 90%, transparent);
+}
+
+
+/*表デザイン*/
+.report table{
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.report table tr{
+    border-bottom: solid 2px white;
+}
+
+.report table tr:last-child{
+    border-bottom: none;
+}
+
+.report table th{
+    position: relative;
+    text-align: left;
+    width: 30%;
+    background-color: #EC407A;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+}
+
+.report table th:after{
+    display: block;
+    content: "";
+    width: 0px;
+    height: 0px;
+    position: absolute;
+    top:calc(50% - 10px);
+    right:-10px;
+    border-left: 10px solid #EC407A;
+    border-top: 10px solid transparent;
+    border-bottom: 10px solid transparent;
+}
+
+.report table td{
+    text-align: left;
+    width: 70%;
+    text-align: center;
+    background-color: #eeeeee;
+    padding: 10px 0;
+}
+
+/*テキストボックス*/
+.cp_iptxt {
+	position: relative;
+	width: 80%;
+	margin: 40px 3%;
+}
+.cp_iptxt input{
+	font: 15px/24px sans-serif;
+	box-sizing: border-box;
+	width: 100%;
+	padding: 0.3em;
+	transition: 0.3s;
+	letter-spacing: 1px;
+	color: #1b2538;
+	border: 1px solid #1b2538;
+	border-radius: 4px;
+}
+.ef input:focus {
+	border: 1px solid #EC407A; /* テキストボックス内ホバー色 */
+	outline: none;
+	box-shadow: 0 0 5px 1px rgba(218,60,65, .5);
+}
+
+/*ドロップダウンの設定*/
+.cp_ipselect {
     overflow: hidden;
     width: 100%;
     margin: 1em auto;
     text-align: center;
-    }
-    .cp_ipselect select {
+}
+.cp_ipselect select {
     font-family: inherit;
     font-size: 1rem;
     -webkit-box-sizing: border-box;
@@ -77,16 +157,16 @@
     box-shadow: none;
     -webkit-appearance: none;
     appearance: none;
-    }
-    .cp_ipselect select::-ms-expand {
+}
+.cp_ipselect select::-ms-expand {
     display: none;
-    }
-    .cp_ipselect.cp_sl01 {
+}
+.cp_ipselect.cp_sl01 {
     position: relative;
     border: 1px solid #cccccc;
     border-radius: 2px;
-    }
-    .cp_ipselect.cp_sl01::before {
+}
+.cp_ipselect.cp_sl01::before {
     position: absolute;
     top: 1em;
     right: 0.9em;
@@ -98,99 +178,262 @@
     border-top: 6px solid #da3c41;
     border-right: 6px solid transparent;
     border-left: 6px solid transparent;
-    }
-    .cp_ipselect.cp_sl01 select {
+}
+.cp_ipselect.cp_sl01 select {
     padding: 8px 38px 8px 8px;
     color: #999999;
-    }
-    .cp_ipselect.cp_sl01 select:valid {
+}
+.cp_ipselect.cp_sl01 select:valid {
     color: #333333;
-    }
-    
-    /* チャックボックス*/
-    .cp_ipcheck {
-        -webkit-box-sizing: border-box;
-                box-sizing: border-box;
-    }
-    .cp_ipcheck:before, .cp_ipcheck:after {
-        -webkit-box-sizing: inherit;
-                box-sizing: inherit;
-    }
-    .cp_ipcheck .box {
-        width: 90%;
-        margin: 2em auto;
-        text-align: left;
-        border: 1px solid white;
-        border-radius: 3px;
-        background: #ffffff;
-    }
-    .cp_ipcheck input[type=checkbox] {
-        display: none;
-    }
-    .cp_ipcheck label:focus,
-    .cp_ipcheck label:hover,
-    .cp_ipcheck label:active,
-    .cp_ipcheck input:checked + label {
-        color: #EC407A; /* チャックボックス内の文字色 */
-    }
-    .cp_ipcheck label:focus:before,
-    .cp_ipcheck label:hover:before,
-    .cp_ipcheck label:active:before,
-    .cp_ipcheck input:checked + label:before {
-        border-color: #EC407A;/* チャックボックス内の外枠の色 */
-        background: #ffffff;
-    }
-    .cp_ipcheck label {
-        font-size: 1em;
-        font-weight: bold;
-        line-height: 1;
-        position: relative;
-        display: block;
-        overflow: hidden;
-        padding: 1em 1em 1em 3em;
-        cursor: pointer;
-        -webkit-transition: all 0.15s ease;
-                transition: all 0.15s ease;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        background: #ffffff;
-    }
-    .cp_ipcheck label:before {
-        position: absolute;
-        top: 1em;
-        left: 1em;
-        width: 10px;
-        height: 10px;
-        content: '';
-        border: 0.2em solid #cccccc;
-    }
-    .cp_ipcheck input:checked + label:before {/* チャックボックス内のチャック後の色 */
-        border-color: #EC407A;
-        background: #EC407A;
-    }
-    
-    /*ページタイトルの指定*/
-    .cp_h1title {
-        position: relative;
-        display: inline-block;
-        padding: 0 17%;
-        text-align: center;
-        color:#000000;/*文字色*/
-    }
-    .cp_h1title:before, .cp_h1title:after {
-        content: '';
-        position: absolute;
-        top: 50%;
-        display: inline-block;
-        width: 15%;
-        height: 1px;
-        background-color: #F4511E;
-    }
-    .cp_h1title:before {
-        left:0;
-        background: linear-gradient(-45deg, transparent, #EC407A 10%, #EC407A 30%, transparent);
-    }
-    .cp_h1title:after {
-        right: 0;
-        background: linear-gradient(-45deg, transparent, #EC407A 70%, #EC407A 90%, transparent);
-    }
+}
+
+/* チャックボックス*/
+.cp_ipcheck {
+	-webkit-box-sizing: border-box;
+	        box-sizing: border-box;
+}
+.cp_ipcheck:before, .cp_ipcheck:after {
+	-webkit-box-sizing: inherit;
+	        box-sizing: inherit;
+}
+.cp_ipcheck .box {
+	width: 90%;
+	margin: 2em auto;
+	text-align: left;
+	border: 1px solid white;
+	border-radius: 3px;
+	background: #ffffff;
+}
+.cp_ipcheck input{
+	display: none;
+}
+.cp_ipcheck label:focus,
+.cp_ipcheck label:hover,
+.cp_ipcheck label:active,
+.cp_ipcheck input:checked + label {
+	color: #EC407A; /* チャックボックス内の文字色 */
+}
+.cp_ipcheck label:focus:before,
+.cp_ipcheck label:hover:before,
+.cp_ipcheck label:active:before,
+.cp_ipcheck input:checked + label:before {
+	border-color: #EC407A;/* チャックボックス内の外枠の色 */
+	background: #ffffff;
+}
+.cp_ipcheck label {
+	font-size: 1em;
+	font-weight: bold;
+	line-height: 1;
+	position: relative;
+	display: block;
+	overflow: hidden;
+	padding: 1em 1em 1em 3em;
+	cursor: pointer;
+	-webkit-transition: all 0.15s ease;
+	        transition: all 0.15s ease;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+	background: #ffffff;
+}
+.cp_ipcheck label:before {
+	position: absolute;
+	top: 1em;
+	left: 1em;
+	width: 10px;
+	height: 10px;
+	content: '';
+	border: 0.2em solid #cccccc;
+}
+.cp_ipcheck input:checked + label:before {/* チャックボックス内のチャック後の色 */
+	border-color: #EC407A;
+	background: #EC407A;
+}
+
+/* テキストボックスの指定 */
+.cp_iptxt {
+	position: relative;
+	width: 100%;
+	margin: 40px 3%;
+}
+.cp_iptxt input{
+	font: 15px/24px sans-serif;
+	box-sizing: border-box;
+	width: 100%;
+	letter-spacing: 1px;
+	padding-left: 4em;
+}
+.cp_iptxt input:focus {
+	outline: none;
+}
+.ef {
+	padding: 4px 0;
+	border: 0;
+	// border-bottom: 1px solid #1b2538;
+	background-color: transparent;
+}
+.ef ~ .focus_line {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 0;
+	height: 2px;
+	transition: 0.4s;
+	background-color: #da3c41;
+}
+.ef:focus ~ .focus_line,
+.cp_iptxt.ef ~ .focus_line {
+	width: 100%;
+	transition: 0.4s;
+}
+.ef ~ label {
+	position: absolute;
+	z-index: -1;
+	top: 4px;
+	left: 0;
+	width: 100%;
+	transition: 0.3s;
+	letter-spacing: 0.5px;
+	color: #aaaaaa;
+}
+.ef:focus ~ label, .cp_iptxt.ef ~ label {
+	font-size: 12px;
+	top: -16px;
+	transition: 0.3s;
+	color: #da3c41;
+}
+
+.cp_form form.go-bottom > .cp_tx {
+    position: relative;
+    width: 100%;
+    margin: 1em 0;
+}
+
+.cp_form form.go-bottom input[type=button],
+.cp_form form.go-bottom input[type=submit],
+.cp_form form.go-bottom input[type=checkbox],
+.cp_form form.go-bottom input[type=radio],
+.cp_form form.go-bottom input[type='text'],
+.cp_form form.go-bottom input[type='tel'],
+.cp_form form.go-bottom input[type=password],
+.cp_form form.go-bottom input[type=email],
+.cp_form form.go-bottom input[type=url],
+.cp_form form.go-bottom input[type=date],
+.cp_form form.go-bottom input[type=number],
+.cp_form form.go-bottom .cp_ipfile .file_text,
+.cp_form form.go-bottom textarea {
+    font-family: inherit;
+    font-size: 1rem;
+    position: relative;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 8px 12px;
+    border: 1px solid #cccccc;
+    outline: 0;
+    background: none;
+}
+
+.cp_form form.go-bottom input[type=password]:valid,
+.cp_form form.go-bottom input[type=email]:valid,
+.cp_form form.go-bottom input[type=url]:valid,
+.cp_form form.go-bottom input[type=date]:valid,
+.cp_form form.go-bottom input[type=number]:valid,
+.cp_form form.go-bottom input[type='text']:valid,
+.cp_form form.go-bottom input[type='tel']:valid,
+.cp_form form.go-bottom textarea:valid {
+    background: #e7fcff;
+    /*背景色*/
+}
+
+.cp_form form.go-bottom input[type=password]:focus,
+.cp_form form.go-bottom input[type=email]:focus,
+.cp_form form.go-bottom input[type=url]:focus,
+.cp_form form.go-bottom input[type=date]:focus,
+.cp_form form.go-bottom input[type=number]:focus,
+.cp_form form.go-bottom input[type='text']:focus,
+.cp_form form.go-bottom input[type='tel']:focus,
+.cp_form form.go-bottom textarea:focus {
+    border-color: #EC407A;
+}
+
+.cp_form form.go-bottom input[type=password]:focus + label,
+.cp_form form.go-bottom input[type=email]:focus + label,
+.cp_form form.go-bottom input[type=url]:focus + label,
+.cp_form form.go-bottom input[type=date]:focus + label,
+.cp_form form.go-bottom input[type=number]:focus + label,
+.cp_form form.go-bottom input[type='text']:focus + label,
+.cp_form form.go-bottom input[type='tel']:focus + label,
+.cp_form form.go-bottom textarea:focus + label {
+    font-size: 0.7em;
+    line-height: 1.2;
+    z-index: 2;
+    -webkit-box-sizing: border-box;
+    box-sizing: border-box;
+    width: 100%;
+    padding: 1px 6px 2px 6px;
+    text-transform: uppercase;
+    color: #ffffff;
+    background: #EC407A;
+}
+
+.cp_form form.go-bottom .cp_tx label {
+    position: absolute;
+    padding: 7px 6px;
+    transition: background 0.2s, color 0.2s, top 0.2s, bottom 0.2s, right 0.2s, left 0.2s;
+    color: #999999;
+}
+
+.cp_form form.go-bottom textarea {
+    display: block;
+    resize: vertical;
+}
+
+.cp_form form.go-bottom input[type=password],
+.cp_form form.go-bottom input[type=email],
+.cp_form form.go-bottom input[type=url],
+.cp_form form.go-bottom input[type=date],
+.cp_form form.go-bottom input[type=number],
+.cp_form form.go-bottom input[type='text'],
+.cp_form form.go-bottom input[type='tel'],
+.cp_form form.go-bottom textarea {
+    padding: 12px 12px 12px 12px;
+}
+
+.cp_form form.go-bottom label {
+    top: 0;
+    bottom: 0;
+    left: 0;
+}
+
+.cp_form form.go-bottom input[type=password]:focus + label,
+.cp_form form.go-bottom input[type=email]:focus + label,
+.cp_form form.go-bottom input[type=url]:focus + label,
+.cp_form form.go-bottom input[type=date]:focus + label,
+.cp_form form.go-bottom input[type=number]:focus + label,
+.cp_form form.go-bottom input[type='text']:focus + label,
+.cp_form form.go-bottom input[type='tel']:focus + label,
+.cp_form form.go-bottom textarea:focus + label {
+    top: 100%;
+    margin-top: -16px;
+}
+
+/*ボタンの設定*/
+.cp_btn {
+	display: block;
+	width: 160px;
+	padding: 0.8em;
+	text-align: center;
+	text-decoration: none;
+    color: #EC407A;
+    background: #fff;
+	border: 2px solid #EC407A;
+	border-radius: 3px;
+	transition: .4s;
+}
+.cp_btn:hover {
+	background: #EC407A;
+	color: #fff;
+}

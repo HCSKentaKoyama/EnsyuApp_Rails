@@ -2,7 +2,7 @@
     <div class="box-heading">
         ログイン
     </div>
-    <div class="box-body">
+    <div class="box-body cp_form">
         <%= form_tag("/login") do %>
             <div class="form-group">
                 <label>ユーザ名</label>
@@ -12,8 +12,8 @@
                 <label>パスワード</label>
                 <input type="password" name ="password" value="<%= @password %>" class="form-control bootstrap-form">
             </div>
-            <div class="text-center">
-                <input type="submit" value="ログイン" class="btn btn-primary">
+            <div class="center">
+                <input type="submit" value="ログイン" class="cp_btn">
             </div>
         <% end %>
     </div>

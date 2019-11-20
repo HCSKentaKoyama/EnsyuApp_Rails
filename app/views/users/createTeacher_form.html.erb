@@ -2,7 +2,7 @@
     <div class="box-heading">
         教員登録
     </div>
-    <div class="box-body">
+    <div class="box-body cp_form">
         <%= form_tag("/new/teacher") do %>
             <div class="form-group">
                 <label>ユーザID</label>
@@ -16,7 +16,7 @@
                 <label>名前</label>
                 <input name ="name" value="<%= @name %>" class="form-control bootstrap-form">
             </div>
-            <input type="submit" value="新規登録" class="btn btn-primary">
+            <input type="submit" value="新規登録" class="cp_btn">
         <% end %>
     </div>
 </div>

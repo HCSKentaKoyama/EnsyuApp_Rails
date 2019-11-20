@@ -2,7 +2,7 @@
     <div class="box-heading">
         学生登録
     </div>
-    <div class="box-body">
+    <div class="box-body cp_form">
         <%= form_tag("/new/student") do %>
             <div class="form-group">
                 <label>ユーザID</label>
@@ -14,7 +14,7 @@
             </div>
             <div class="form-group">
                 <label>クラス番号(例 : R4A101)</label>
-                <%= autocomplete_field_tag 'class_number', nil, autocomplete_user_class_number_users_path,:required => true,:value => "#{@class_number}" %>
+                <%= autocomplete_field_tag 'class_number', nil, autocomplete_user_class_number_users_path,:required => true,:value => "#{@class_number}", :class => "form-control bootstrap-form" %>
             </div>
             <div class="form-group">
                 <label>名前</label>
@@ -22,9 +22,9 @@
             </div>
             <div class="form-group">
                 <label>担当教員ID</label>
-                <%= autocomplete_field_tag 'teacher_id', nil, autocomplete_user_teacher_id_users_path,:required => true,:value => "#{@teacher_id}" %>
+                <%= autocomplete_field_tag 'teacher_id', nil, autocomplete_user_teacher_id_users_path,:required => true,:value => "#{@teacher_id}",:class => "form-control bootstrap-form" %>
             </div>
-            <input type="submit" value="新規登録" class="btn btn-primary">
+            <input type="submit" value="新規登録" class="cp_btn">
         <% end %>
     </div>
 </div>

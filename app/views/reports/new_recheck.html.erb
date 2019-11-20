@@ -2,7 +2,7 @@
     <div class="box-heading">
         確認
     </div>
-    <div class="box-body cp_form">
+    <div class="box-body cp_form report">
         <h2 class="cp_reporth1title"><%= @report.com_name %></h2>
             <table>
                 <tr>
@@ -54,9 +54,10 @@
                     <td><%= @hash_result.fetch(:"#{@report.result}") %></td>
                 </tr>
             </table>
-
+        <br/>
+        <center>
         <%= form_tag("/entry") do %>
-            <input type="submit" value="送信" class="btn_cont cp_btn text-center">
+            <input type="submit" value="送信" class="cp_btn">
             <input type="hidden" name="com_name" value="<%= @report.com_name %>">
             <input type="hidden" name="exam_date" value="<%= @report.exam_date %>">
             <input type="hidden" name="exam_place" value="<%= @report.exam_place %>">
@@ -68,5 +69,6 @@
             <input type="hidden" name="free_comment" value="<%= @report.free_comment %>">
             <input type="hidden" name="result" value="<%= @report.result %>">
         <% end %>
+        </center>
     </div>
 </div>

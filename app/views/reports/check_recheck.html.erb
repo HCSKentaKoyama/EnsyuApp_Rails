@@ -2,7 +2,7 @@
     <div class="box-heading">
         確認
     </div>
-    <div class="box-body cp_form">
+    <div class="box-body cp_form report">
         <h2 class="cp_reporth1title"><%= @report.com_name %></h2>
         <table>
                 <tr>
@@ -70,7 +70,7 @@
                 </tr>
             </table>
 
-
+        <center>
         <%= form_tag("/report/check") do %>
             <% if @report.auth_flag == "3" %>
                 <div class="form-group cp_tx">
@@ -78,10 +78,12 @@
                     <label>再提出の期限を設定してください</label>
                 </div>
             <% end %>
-            <input type="submit" value="確定" class="btn_cont cp_btn text-center">
+            <br/>
+            <input type="submit" value="確定" class="cp_btn">
             <input type="hidden" name="id" value="<%= @report.id %>">
             <input type="hidden" name="teached_comment" value="<%= @report.teached_comment %>">
             <input type="hidden" name="auth_flag" value="<%= @report.auth_flag %>">
         <% end %>
+        </center>
     </div>
 </div>

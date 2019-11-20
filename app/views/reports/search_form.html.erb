@@ -3,15 +3,16 @@
         受験報告書　検索
     </div>
     <div class="box-body cp_form">
+    <center>
         <%= form_tag("/search/result") do %>
             <div class="form-group cp_iptxt">
                 <label class="ef">
-                    <%= autocomplete_field_tag 'com_name', nil, autocomplete_report_com_name_reports_path,:placeholder => '企業名',:required => true %>
+                    <%= autocomplete_field_tag 'com_name', nil, autocomplete_report_com_name_reports_path,:placeholder => '企業名',:required => true,:class => "form-control bootstrap-form" %>
                 </label>
             </div>
             <h3>試験内容</h3>
             <div class="cp_ipcheck">
-                <div class="box">
+                <div class="box report">
                     <table>
                         <tr>
                             <td>
@@ -57,5 +58,6 @@
             </div>
             <input type="submit" value="検索" class="cp_btn">
         <% end %>
+    </center>
     </div>
 </div>

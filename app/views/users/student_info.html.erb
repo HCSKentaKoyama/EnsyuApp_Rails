@@ -3,8 +3,8 @@
         学生情報
     </div>
     <div class="box-body cp_form">
-        <h2 class="cp_reporth1title"><%= @student.name %></h2>
-        <table>
+        <h2><%= @student.name %></h2>
+        <table class="table table-hover alt-table-responsive">
             <tr>
                 <th>学籍番号</th>
                 <td><%= @student.user_id %></td>
@@ -23,7 +23,7 @@
             </tr>
         </table>
         <br/>
-        承認済み報告書一覧
+        <h3>承認済み報告書一覧</h3>
         <table class="table table-hover alt-table-responsive">
             <thead>
                 <tr>
