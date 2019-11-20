@@ -5,7 +5,7 @@
     <div class="box-body">
         <h2 class="cp_h1title text-center">受験報告書</h2>
         <div class="cp_form">
-            <%= form_tag("entry/recheck",class: "go-bottom") do %>
+            <%= form_tag("/entry/recheck",class: "go-bottom") do %>
                 <div class="form-group cp_tx">
                     <input type="text" name ="com_name" value="<%= @com_name %>" class="form-control bootstrap-form" required>
                     <label>企業名</label>
@@ -114,8 +114,8 @@
                     <textarea name="free_comment" required></textarea>
                     <label>自由記述欄</label>
                 </div>
-                <div class="form-group cp_ipselect cp_sl01" name="result">
-                    <select>
+                <div class="form-group cp_ipselect cp_sl01">
+                    <select  name="result">
                     <option value="" hidden>合否</option>
                     <option value="0">合格</option>
                     <option value="1">不合格</option>
