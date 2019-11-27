@@ -4,6 +4,8 @@ class UsersController < ApplicationController
     before_action :authenticate_user, {only: [:logout,:createStudent,:createStudent_form,:createTeacher,:createTeacher_form,:update_form,:update,:chargedStudent_list,:student_info]}
     before_action :forbid_login_user, {only: [:login_form, :login]}
     before_action :admin_user_only,{only: [:createStudent,:createStudent_form,:createTeacher,:createTeacher_form]}
+    before_action :student_user_only,{only: []}
+    before_action :teacher_user_only,{only: [:chargedStudent_list]}
 
     def login_form
         @user = User.new

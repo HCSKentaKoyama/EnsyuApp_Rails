@@ -1,9 +1,9 @@
 class ApplicationController < ActionController::Base
     protect_from_forgery with: :exception
     before_action :set_current_user
-    autocomplete :report, :com_name, full: true # 追加
-    autocomplete :user, :class_number, full: true # 追加
-    autocomplete :user, :teacher_id, full: true # 追加
+    autocomplete :report, :com_name, :full => true # 追加
+    autocomplete :user, :class_number, :full => true # 追加
+    autocomplete :user, :teacher_id, :full => true # 追加
 
 
     def set_current_user
@@ -26,6 +26,20 @@ class ApplicationController < ActionController::Base
 
     def admin_user_only
         if @current_user.role != "admin"
+            flash[:notice] = "不正なアクセスです"
+            redirect_to("/index")
+        end
+    end
+
+    def student_user_only
+        if @current_user.role != "student"
+            flash[:notice] = "不正なアクセスです"
+            redirect_to("/index")
+        end
+    end
+
+    def teacher_user_only
+        if @current_user.role != "teacher"
             flash[:notice] = "不正なアクセスです"
             redirect_to("/index")
         end

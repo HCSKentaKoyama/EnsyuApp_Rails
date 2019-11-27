@@ -2,8 +2,11 @@ require "report.rb"
 require "date"
 
 class ReportsController < ApplicationController
-    before_action :authenticate_user, {only: [:index]}
+    before_action :authenticate_user, {only: [:index,:new_form,:new_recheck,:new,:display,:student_list,:chargedList,:check_form,:check_recheck,:check,:anAuthedList,:update_form,:update,:update_recheck,:serach_form,:search_result]}
     before_action :forbid_login_user, {only: []}
+    before_action :admin_user_only,{only: []}
+    before_action :student_user_only,{only: [:new_form,:new_recheck,:new,:student_list,:anAuthedList,:update_form,:update,:update_recheck]}
+    before_action :teacher_user_only,{only: [:chargedList,:check_form,:check_recheck,:check]}
 
     def index
 
